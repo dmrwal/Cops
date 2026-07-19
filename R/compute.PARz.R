@@ -59,7 +59,15 @@ compute.PARz <- function(Depth, waves, Edz, Ed.0,
 
 
   # compute %PAR at fixed depth
+  # Before the line causing the error, add:
+  print(length(Depth))
+  print(length(PAR.z))
+  print(range(Depth, na.rm = TRUE))
+  print(sum(!is.na(Depth)))
 
+  # Also check z.fixed:
+  print(length(z.fixed))
+  print(max(Depth))
   ## DAW: This is where the error is coming from -> need to work on this.
   if (z.fixed[1] >= max(Depth)) {
     res= spline(Depth, (PAR.z/PAR.0m), xout=z.fixed[z.fixed <= max(Depth)])
