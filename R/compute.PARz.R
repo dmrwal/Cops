@@ -57,7 +57,10 @@ compute.PARz <- function(Depth, waves, Edz, Ed.0,
   z.f.PAR = as.data.frame(z.f.PAR[length(f.PAR):1,])
   names(z.f.PAR) = c("%PAR", "z")
 
+
   # compute %PAR at fixed depth
+
+  ## DAW: This is where the error is coming from -> need to work on this.
   if (z.fixed[1] >= max(Depth)) {
     res= spline(Depth, (PAR.z/PAR.0m), xout=z.fixed[z.fixed <= max(Depth)])
     PAR.at.z= as.data.frame(cbind(z.fixed[z.fixed <= max(Depth)],res$y*100))
